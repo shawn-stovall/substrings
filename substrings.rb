@@ -1,13 +1,9 @@
 # Find substrings in a larger string
 def substrings(string, dictionary)
-  result = {}
+  result = Hash.new(0)
   string.split.each do |word|
     match(word, dictionary).each_pair do |w, occurence|
-      if !result.has_key?(w)
-        result[w] = occurence
-      else
-        result[w] += occurence
-      end
+      result[w] += occurence
     end
   end
 
@@ -16,16 +12,12 @@ end
 
 # Find substrings in single word
 def match(word, dictionary)
-  result = {}
+  result = Hash.new(0)
   down_word = word.downcase
 
   dictionary.each do |w|
     if down_word.include?(w)
-      if !result.has_key?(w)
-        result[w] = 1
-      else
-        result[w] += 1
-      end
+      result[w] += 1
     end
   end
 
